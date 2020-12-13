@@ -5,6 +5,29 @@
     <title>Main</title>
 </head>
 <body>
-<h1 th:text= "${some}" />
+<div>Users list</div>
+<table>
+    <thead>
+    <tr>
+        <th> id </th>
+        <th> name </th>
+        <th> password </th>
+        <th> role </th>
+        <th> email </th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr th:if="${users.empty}">
+        <td colspan="2"> No Users Available </td>
+    </tr>-->
+    <tr th:each="user : ${users}">
+        <td><span th:text="${user.id}"> Title </span></td>
+        <td><span th:text="${user.name}"> Author </span></td>
+        <td><span th:text="${user.password}"> Password </span></td>
+        <td><span th:text="${user.role}"> Role </span></td>
+        <td><span th:text="${user.email}"> Email </span></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

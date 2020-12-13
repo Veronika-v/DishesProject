@@ -1,4 +1,4 @@
-package by.rogalevich.dishesproject.controllers;
+package by.rogalevich.dishesproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
