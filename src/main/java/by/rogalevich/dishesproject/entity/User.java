@@ -1,11 +1,9 @@
 package by.rogalevich.dishesproject.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity// This tells Hibernate to make a table out of this class
+@Table(name="users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,6 +15,13 @@ public class User {
     private String email;
 
     public User() {
+    }
+
+    public User(String name, String password, Boolean role, String email) {
+        this.name=name;
+        this.password=password;
+        this.role=role;
+        this.email=email;
     }
 
     public Integer getId() {

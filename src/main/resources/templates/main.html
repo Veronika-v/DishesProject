@@ -5,29 +5,37 @@
     <title>Main</title>
 </head>
 <body>
+<div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<div>
+    <form method="post">
+       <input type="text" name="name" placeholder="enter name"/>
+       <input type="text" name="password" placeholder="enter password"/>
+       <input type="text" name="role" placeholder="enter role"/>
+       <input type="text" name="email" placeholder="enter email"/>
+       <button type="submit">Add user</button>
+    </form>
+</div>
+<div>
+    <form method="post" th:action="@{/filter}">
+        <input type="text" name="filter" placeholder="enter name"/>
+        <button type="submit">Search</button>
+    </form>
+</div>
 <div>Users list</div>
-<table>
-    <thead>
-    <tr>
-        <th> id </th>
-        <th> name </th>
-        <th> password </th>
-        <th> role </th>
-        <th> email </th>
-    </tr>
-    </thead>
-    <tbody>
-    <!--<tr th:if="${users.empty}">
-        <td colspan="2"> No Users Available </td>
-    </tr>-->
-    <tr th:each="user : ${users}">
-        <td><span th:text="${user.id}"> Title </span></td>
-        <td><span th:text="${user.name}"> Author </span></td>
-        <td><span th:text="${user.password}"> Password </span></td>
-        <td><span th:text="${user.role}"> Role </span></td>
-        <td><span th:text="${user.email}"> Email </span></td>
-    </tr>
-    </tbody>
-</table>
+
+    <span th:if="${users.empty}">
+         No Users Available </span>
+
+    <span th:each="user : ${users}">
+        <span th:text="${user.id}"/>
+        <span th:text="${user.name}"/>
+        <span th:text="${user.password}"/>
+        <span th:text="${user.role}"/>
+        <span th:text="${user.email}"/></br>
+    </span>
 </body>
 </html>
