@@ -1,4 +1,4 @@
-package by.rogalevich.dishesproject.entity;
+package by.rogalevich.dishesproject.model;
 
 import javax.persistence.*;
 
@@ -14,14 +14,28 @@ public class User {
     private Boolean role;
     private String email;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private Userr author;
+
+    public Userr getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Userr author) {
+        this.author = author;
+    }
+
     public User() {
     }
 
-    public User(String name, String password, Boolean role, String email) {
+    public User(String name, String password, Boolean role, String email,  Userr author) {
         this.name=name;
         this.password=password;
         this.role=role;
         this.email=email;
+
+        this.author = author;
     }
 
     public Integer getId() {

@@ -1,6 +1,6 @@
-package by.rogalevich.dishesproject.repositories;
+package by.rogalevich.dishesproject.repository;
 
-import by.rogalevich.dishesproject.entity.User;
+import by.rogalevich.dishesproject.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -1,9 +1,9 @@
 package by.rogalevich.dishesproject.controller;
 
 
-import by.rogalevich.dishesproject.entity.Role;
-import by.rogalevich.dishesproject.entity.Userr;
-import by.rogalevich.dishesproject.repositories.UserrRepository;
+import by.rogalevich.dishesproject.model.Role;
+import by.rogalevich.dishesproject.model.Userr;
+import by.rogalevich.dishesproject.repository.UserrRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
