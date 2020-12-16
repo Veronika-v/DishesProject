@@ -16,6 +16,7 @@ import java.util.Collections;
 public class RegistrationController {
     @Autowired
     private UserrRepository userrRepository;
+
     @GetMapping("/registration")
     public String registration(){
         return "registration";

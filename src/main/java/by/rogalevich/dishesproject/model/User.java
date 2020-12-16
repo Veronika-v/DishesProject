@@ -14,9 +14,14 @@ public class User {
     private Boolean role;
     private String email;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+
+    /*@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private Userr author;
+
+    public String GetAuthorName(){
+        return author!=null ? author.getUsername():"<none>";
+    }
 
     public Userr getAuthor() {
         return author;
@@ -24,18 +29,18 @@ public class User {
 
     public void setAuthor(Userr author) {
         this.author = author;
-    }
+    }*/
 
     public User() {
     }
 
-    public User(String name, String password, Boolean role, String email,  Userr author) {
+    public User(String name, String password, Boolean role, String email) {
         this.name=name;
         this.password=password;
         this.role=role;
         this.email=email;
 
-        this.author = author;
+        //this.author = author;
     }
 
     public Integer getId() {

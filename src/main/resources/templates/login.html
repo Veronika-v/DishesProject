@@ -7,6 +7,9 @@
 <body>
 <div align="center">
     <h1>Login</h1>
+    <span th:if="${message}">
+        <span th:text="${message}"/>
+    </span>
     <form th:action="@{/login}" method="post">
         <div><label> User Name : <input type="text" name="username"/> </label></div>
         <div><label> Password: <input type="password" name="password"/> </label></div>

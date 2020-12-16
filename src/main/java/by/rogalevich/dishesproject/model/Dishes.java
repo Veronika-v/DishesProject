@@ -1,6 +1,8 @@
 package by.rogalevich.dishesproject.model;
 
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
@@ -26,12 +28,16 @@ public class Dishes {
     private BigDecimal price;
 
     @NotBlank(message = "category cannot be empty")
-    @ElementCollection(targetClass = Category.class, fetch= FetchType.EAGER)
-    @CollectionTable(name="dish_category", joinColumns = @JoinColumn(name="dish_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Category> categories;
+    private String category;
 
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public Integer getId() {
         return id;
@@ -65,11 +71,5 @@ public class Dishes {
         this.price = price;
     }
 
-    public Set<Category> getCategories() {
-        return categories;
-    }
 
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
 }

@@ -5,10 +5,22 @@
     <title>Main</title>
 </head>
 <body>
+
 <div>
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Sign Out"/>
     </form>
+</div>
+
+<div>
+    Current user:
+
+        <span th:text="${userr.id}"/>
+        <span th:text="${userr.username}"/>
+        <span th:text="${userr.password}"/>
+        <span th:text="${userr.roles}"/>
+        <span th:text="${userr.email}"/></br>
+        <!--<b th:text="${user.GetAuthorName()}"></b></br>-->
 </div>
 <div>
     <form method="post">
@@ -25,7 +37,7 @@
         <button type="submit">Search</button>
     </form>
 </div>
-<div>Users list</div>
+<div>Users list
 
     <span th:if="${users.empty}">
          No Users Available </span>
@@ -36,7 +48,20 @@
         <span th:text="${user.password}"/>
         <span th:text="${user.role}"/>
         <span th:text="${user.email}"/></br>
-        <b th:text="${user.author}"></b>
+        <!--<b th:text="${user.GetAuthorName()}"></b></br>-->
     </span>
+</div>
+
+<div>Dishes list
+
+    <span th:if="${dishes.empty}">
+         No Dishes Available </span>
+
+    <span th:each="dish : ${dishes}">
+        <span th:text="${dish.dishname}"/>
+        <span th:text="${dish.dish_description}"/>
+        <span th:text="${dish.price}"/></br>
+    </span>
+</div>
 </body>
 </html>

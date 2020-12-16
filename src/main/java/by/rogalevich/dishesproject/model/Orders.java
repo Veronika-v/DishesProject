@@ -15,8 +15,10 @@ public class Orders {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @NotBlank(message = "user_id cannot be empty")
-    private Integer user_id;///////////////////////////////
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private Userr userr;
+
 
     @NotBlank(message = "order_state cannot be empty")
     @ElementCollection(targetClass = OrderState.class, fetch= FetchType.EAGER)
@@ -24,9 +26,53 @@ public class Orders {
     @Enumerated(EnumType.STRING)
     private Set<OrderState> orderStates;
 
-    @NotBlank(message = "dish_id cannot be empty")
-    private Integer dish_id;///////////////////////////////
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "dish_id")
+    private Dishes dish;
+
 
     @NotBlank(message = "count_of_dishes cannot be empty")
     private Integer count_of_dishes;
+
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Userr getUserr() {
+        return userr;
+    }
+
+    public void setUserr(Userr userr) {
+        this.userr = userr;
+    }
+
+    public Set<OrderState> getOrderStates() {
+        return orderStates;
+    }
+
+    public void setOrderStates(Set<OrderState> orderStates) {
+        this.orderStates = orderStates;
+    }
+
+    public Dishes getDish() {
+        return dish;
+    }
+
+    public void setDish(Dishes dish) {
+        this.dish = dish;
+    }
+
+    public Integer getCount_of_dishes() {
+        return count_of_dishes;
+    }
+
+    public void setCount_of_dishes(Integer count_of_dishes) {
+        this.count_of_dishes = count_of_dishes;
+    }
 }
