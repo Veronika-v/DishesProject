@@ -19,10 +19,13 @@ import static java.lang.Integer.parseInt;
 
 @Controller
 public class OrdersController {
+
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(OrdersController.class);
+
     @Autowired
     private OrderRepository orderRepository;
 
-    @PostMapping("/orders")
+    @PostMapping("/acceptOrder") //!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     public String AcceptOrder( @RequestParam String order_id, Model model){
         Orders order =orderRepository.findById(parseInt(order_id));
         if(order.getOrderStates().equals(Collections.singleton(OrderState.MORDER)))
@@ -32,6 +35,7 @@ public class OrdersController {
         }
         else
             model.addAttribute("message", "This order had accepted before");
+
         model.addAttribute("orders", orderRepository.findAll());
         return "orders";
     }

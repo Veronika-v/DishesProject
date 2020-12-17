@@ -19,6 +19,8 @@ import static java.lang.Integer.parseInt;
 @Controller
 public class DishController {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(DishController.class);
+
     @Autowired
     private DishRepository dishRepository;
 

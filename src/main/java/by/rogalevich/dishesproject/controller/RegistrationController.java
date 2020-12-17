@@ -14,6 +14,9 @@ import java.util.Collections;
 
 @Controller
 public class RegistrationController {
+
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(RegistrationController.class);
+
     @Autowired
     private UserrRepository userrRepository;
 
