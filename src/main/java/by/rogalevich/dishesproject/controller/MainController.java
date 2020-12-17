@@ -1,5 +1,6 @@
 package by.rogalevich.dishesproject.controller;
 
+import by.rogalevich.dishesproject.SendEmail;
 import by.rogalevich.dishesproject.model.OrderState;
 import by.rogalevich.dishesproject.model.Orders;
 import by.rogalevich.dishesproject.model.User;
@@ -42,27 +43,9 @@ public class MainController {
     @GetMapping("/main")
     public String main(@AuthenticationPrincipal Userr userr, Model model) {
         model.addAttribute("userr", userr);
-       // model.addAttribute("users", userRepository.findAll());
         model.addAttribute("dishes", dishRepository.findAll());
         return "main";
     }
-
-
-    /*@PostMapping("/main")
-    public String addNewUser ( @RequestParam  String name, @RequestParam  String password, @RequestParam  Boolean role, @RequestParam  String email, Model model) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-
-        User n = new User();//(name, password, role, email);
-        n.setName(name);
-        n.setPassword(password);
-        n.setRole(role);
-        n.setEmail(email);
-        userRepository.save(n);
-        model.addAttribute("users", userRepository.findAll());
-        return "main";
-    }*/
-
 
     @PostMapping("makeOrder")
     public String filter (@AuthenticationPrincipal Userr userr, @RequestParam  String makeOrder, @RequestParam( defaultValue = "1") String countDishes , Model model) {
@@ -74,6 +57,7 @@ public class MainController {
             o.setOrderStates(Collections.singleton(OrderState.MORDER));
             o.setCount_of_dishes(parseInt(countDishes));
             orderRepository.save(o);
+            log.info("create new order by "+ userr.getUsername()+" user");
         }
         else
             model.addAttribute("message", "Enter the dish ID");
@@ -88,6 +72,14 @@ public class MainController {
             model.addAttribute("dishes", dishRepository.findAll());
         model.addAttribute("userr", userr);
         return "main";
+    }
+
+
+    @PostMapping("/sendEmail")
+    public String sendEmail ( @RequestParam String subject, @RequestParam String text, @RequestParam String email, Model model) {
+        SendEmail email_= new SendEmail();
+        email_.SendSimpleEmail(subject,text,email);
+        return "sent!";
     }
 }
 

@@ -1,5 +1,6 @@
 package by.rogalevich.dishesproject.controller;
 
+import by.rogalevich.dishesproject.SendEmail;
 import by.rogalevich.dishesproject.model.*;
 import by.rogalevich.dishesproject.repository.DishRepository;
 import by.rogalevich.dishesproject.repository.OrderRepository;
@@ -22,6 +23,8 @@ public class OrdersController {
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(OrdersController.class);
 
+    SendEmail email= new SendEmail();
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -31,7 +34,9 @@ public class OrdersController {
         if(order.getOrderStates().equals(Collections.singleton(OrderState.MORDER)))
         {
             order.setOrderStates(Collections.singleton(OrderState.GORDER));
-            orderRepository.save(order);
+            //orderRepository.save(order);
+            email.SendSimpleEmail("dishProjectSpring", "Your order is prepared","student.it.rvs@gmail.com");
+            log.info("update an order with id: "+order.getId());
         }
         else
             model.addAttribute("message", "This order had accepted before");

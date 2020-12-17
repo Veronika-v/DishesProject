@@ -37,6 +37,8 @@ public class RegistrationController {
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userrRepository.save(user);
+        log.info("add new user  with username: "+user.getUsername()+" and userId: "+user.getId());
+
         return "redirect:/login";
     }
 }

@@ -27,6 +27,7 @@ public class DishController {
     @PostMapping("/dish")
     public String addDish(Dishes dish, Model model){
         dishRepository.save(dish);
+        log.info("create a new dish with dishId: "+dish.getId());
         model.addAttribute("dishes", dishRepository.findAll());
         return "dish";
     }
@@ -36,6 +37,7 @@ public class DishController {
 
         Dishes dish= dishRepository.findById(parseInt(dish_id));
         dishRepository.delete(dish);
+        log.info("delete the dish with id: "+dish.getId());
         model.addAttribute("dishes", dishRepository.findAll());
         return "dish";
     }
