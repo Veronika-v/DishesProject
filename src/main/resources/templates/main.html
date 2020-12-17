@@ -43,12 +43,7 @@
        <button type="submit" class="btn btn-primary">Add user</button>
     </form>
 </div>
-<div>
-    <form method="post" th:action="@{/filter}">
-        <input type="text" name="filter" placeholder="enter name"/>
-        <button type="submit">Search</button>
-    </form>
-</div>
+
 <div>Users list
 
     <span th:if="${users.empty}">
@@ -76,7 +71,7 @@
         </thead>
         <tbody>
         <tr th:if="${dishes.empty}">
-            <td colspan="2"> No Books Available </td>
+            <td colspan="5"> No dishes available </td>
         </tr>
         <tr th:each="dish : ${dishes}">
             <td><span th:text="${dish.id}"/></td>
@@ -89,7 +84,13 @@
     </table>
 </br>
 </div>
-
+    <h4>Filter</h4></br>
+    <div>
+        <form method="post" th:action="@{/filter}">
+            <input type="text" name="filter" placeholder="enter dish name"/>
+            <button type="submit">Search</button>
+        </form>
+    </div>
 <div>
     <form method="post" th:action="@{/makeOrder}">
         <input type="text" name="makeOrder" placeholder="enter dish id"/>
@@ -97,7 +98,7 @@
         <button type="submit">Make an order</button>
     </form>
 </div>
-<h2>Message!!</h2>
+<h4>Message!!</h4>
 <span th:if="${message}">
         <span th:text="${message}"/>
 </span>
