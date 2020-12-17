@@ -34,7 +34,7 @@ public class Orders {
     @NotBlank(message = "count_of_dishes cannot be empty")
     private Integer count_of_dishes;
 
-    public Integer getId() { return id; }
+    public Integer getId() { return id;}
 
     public void setId(Integer id) {
         this.id = id;

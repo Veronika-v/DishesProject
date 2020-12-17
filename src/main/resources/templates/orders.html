@@ -33,11 +33,14 @@
     </br>
 </div>
 <div>
-    <!--<form method="post" th:action="@{/acceptOrder}">-->
-    <form method="post" th:action="@{/order}">
-    <input type="text" name="orderId" placeholder="enter order id"/>
+    <form method="post" th:action="@{/acceptOrder}">
+    <!--<form method="post" th:action="@{/order}">-->
+    <input type="text" name="order_id" placeholder="enter order id"/>
         <button type="submit">Accept an order</button>
     </form>
+    <span th:if="${message}">
+        <h3 th:text="${message}"/>
+</span>
 </div>
 </body>
 </html>
