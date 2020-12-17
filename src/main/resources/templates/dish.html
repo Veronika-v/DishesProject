@@ -7,7 +7,7 @@
 </head>
 <body>
     <div align="center">
-        <div>
+        <div> Add new dish </br>
             <form method="post" th:action="@{/dish}">
                 <input type="text" name="dishname" placeholder="enter a dish name"/>
                 <input type="text" name="dish_description" placeholder="enter a description"/>
@@ -16,7 +16,7 @@
                 <button type="submit">Add dish</button>
             </form>
         </div>
-    </div>
+
 <div> Dishes menu
     <table>
         <thead>
@@ -30,7 +30,7 @@
         </thead>
         <tbody>
         <tr th:if="${dishes.empty}">
-            <td colspan="2"> No Books Available </td>
+            <td colspan="5"> No dishes available </td>
         </tr>
         <tr th:each="dish : ${dishes}">
             <td><span th:text="${dish.id}"/></td>
@@ -43,6 +43,12 @@
     </table>
     </br>
 </div>
-
+    <div> Delete dish </br>
+        <form method="post" th:action="@{/dish_delete}">
+            <input type="text" name="dish_id" placeholder="enter a dish name"/>
+            <button type="submit">Delete dish</button>
+        </form>
+    </div>
+    </div>
 </body>
 </html>
