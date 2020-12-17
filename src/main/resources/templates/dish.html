@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<body>
     <div align="center">
         <div>
             <form method="post" th:action="@{/dish}">
@@ -16,7 +17,32 @@
             </form>
         </div>
     </div>
-<body>
+<div> Dishes menu
+    <table>
+        <thead>
+        <tr>
+            <th> Dish ID </th>
+            <th> Dish name </th>
+            <th> Dish description </th>
+            <th> Dish category </th>
+            <th> Dish price (rub.)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${dishes.empty}">
+            <td colspan="2"> No Books Available </td>
+        </tr>
+        <tr th:each="dish : ${dishes}">
+            <td><span th:text="${dish.id}"/></td>
+            <td><span th:text="${dish.dishname}"/></td>
+            <td><span th:text="${dish.dish_description}"/></td>
+            <td><span th:text="${dish.category}"/></td>
+            <td><span th:text="${dish.price}"/></td>
+        </tr>
+        </tbody>
+    </table>
+    </br>
+</div>
 
 </body>
 </html>

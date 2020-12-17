@@ -6,18 +6,38 @@
     <title>Orders</title>
 </head>
 <body>
-<div>Orders list
-
-    <span th:if="${orders.empty}">
-         No Orders  </span>
-
-    <span th:each="order : ${orders}">
-        <span th:text="${order.id}"/>
-        <span th:text="${order.dish}"/>
-        <span th:text="${order.userr}"/>
-        <span th:text="${order.count_of_dishes}"/></br>
-        <!--<b th:text="${user.GetAuthorName()}"></b></br>-->
-    </span>
+<div>Orders list </br>
+    <table>
+        <thead>
+        <tr>
+            <th> Order ID </th>
+            <th> User name </th>
+            <th> Dish name </th>
+            <th> Count of the dish </th>
+            <th> Order state</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${orders.empty}">
+            <td colspan="2"> No orders available </td>
+        </tr>
+        <tr th:each="order : ${orders}">
+            <td><span th:text="${order.id}"/></td>
+            <td><span th:text="${order.userr.username}"/></td>
+            <td><span th:text="${order.dish.dishname}"/></td>
+            <td><span th:text="${order.count_of_dishes}"/></td>
+            <td><span th:text="${order.orderStates}"/></td>
+        </tr>
+        </tbody>
+    </table>
+    </br>
+</div>
+<div>
+    <!--<form method="post" th:action="@{/acceptOrder}">-->
+    <form method="post" th:action="@{/order}">
+    <input type="text" name="orderId" placeholder="enter order id"/>
+        <button type="submit">Accept an order</button>
+    </form>
 </div>
 </body>
 </html>
