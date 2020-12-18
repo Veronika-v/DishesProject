@@ -28,10 +28,13 @@ public class OrdersController {
     @Autowired
     private OrderRepository orderRepository;
 
-    @PostMapping("/acceptOrder") //!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+    @PostMapping("/acceptOrder")
     public String AcceptOrder( @RequestParam String order_id, Model model){
         Orders order =orderRepository.findById(parseInt(order_id));
-        if(order.getOrderStates().equals(Collections.singleton(OrderState.MORDER)))
+        orderRepository.delete(order);
+        Userr user= order.getUserr();
+        String email_user= user.getEmail();
+        /*if(order.getOrderStates().equals(Collections.singleton(OrderState.MORDER)))
         {
             order.setOrderStates(Collections.singleton(OrderState.GORDER));
             //orderRepository.save(order);
@@ -40,7 +43,9 @@ public class OrdersController {
         }
         else
             model.addAttribute("message", "This order had accepted before");
-
+*/
+        email.SendSimpleEmail("dishProjectSpring", "Your order is prepared",email_user);
+        log.info("accept an order with id: "+order.getId());
         model.addAttribute("orders", orderRepository.findAll());
         return "orders";
     }
