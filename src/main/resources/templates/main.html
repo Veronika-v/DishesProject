@@ -3,70 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
-    <style type="text/css">
-        TABLE {
-            width: 300px; /* Ширина таблицы */
-            border-collapse: collapse; /* Убираем двойные линии между ячейками */
-        }
-        TD, TH {
-            padding: 3px; /* Поля вокруг содержимого таблицы */
-            border: 1px solid black; /* Параметры рамки */
-        }
-        TH {
-            background: #b0e0e6; /* Цвет фона */
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
 <div align="center">
 <div>
     <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
+        <input type="submit" class="btn btn-secondary" value="Sign Out"/>
     </form>
 </div>
 
 <div>
-    Current user:
+    <h3>Current user:</h3>
 
         <span th:text="${userr.id}"/>
         <span th:text="${userr.username}"/>
         <span th:text="${userr.password}"/>
         <span th:text="${userr.roles}"/>
         <span th:text="${userr.email}"/></br>
-</div>
-<!--<div>
-    <form method="post" >
-       <input type="text" name="name" placeholder="enter name"/>
-       <input type="text" name="password" placeholder="enter password"/>
-       <input type="text" name="role" placeholder="enter role"/>
-       <input type="text" name="email" placeholder="enter email"/>
-       <button type="submit" class="btn btn-primary">Add user</button>
-    </form>
-</div>
+</div></br></br>
 
-<div>Users list
-
-    <span th:if="${users.empty}">
-         No Users Available </span>
-
-    <span th:each="user : ${users}">
-        <span th:text="${user.id}"/>
-        <span th:text="${user.name}"/>
-        <span th:text="${user.password}"/>
-        <span th:text="${user.role}"/>
-        <span th:text="${user.email}"/></br>
-    </span>
-</div>-->
-
-<div> Dishes menu
-    <table>
-        <thead>
+<div><h2> Dishes menu</h2>
+    <table class="table table-sm table-spread">
+        <thead class="thead-dark">
         <tr>
-            <th> Dish ID </th>
-            <th> Dish name </th>
-            <th> Dish description </th>
-            <th> Dish category </th>
-            <th> Dish price (rub.)</th>
+            <th scope="col"> Dish ID </th>
+            <th scope="col"> Dish name </th>
+            <th scope="col"> Dish description </th>
+            <th scope="col"> Dish category </th>
+            <th scope="col"> Dish price (rub.)</th>
         </tr>
         </thead>
         <tbody>
@@ -84,24 +50,37 @@
     </table>
 </br>
 </div>
-    <h4>Filter</h4></br>
+    <h4>Filter</h4>
     <div>
         <form method="post" th:action="@{/filter}">
-            <input type="text" name="filter" placeholder="enter dish name"/>
-            <button type="submit">Search</button>
+            <div class="form-row">
+                <div class="col-3"></div>
+                <div class="col-4">
+                    <input type="text" class="form-control" name="filter" placeholder="enter dish name"/>
+                </div>
+                <button type="submit" class="btn btn-secondary">Search</button>
+            </div>
         </form>
-    </div>
+    </div></br></br>
+
+    <h4>Make an order</h4>
 <div>
-    <form method="post" th:action="@{/makeOrder}">
-        <input type="text" name="makeOrder" placeholder="enter dish id"/>
-        <input type="text" name="countDishes" placeholder="enter count of the dish"/>
-        <button type="submit">Make an order</button>
+    <form method="post" th:action="@{/makeOrder} ">
+        <div class="form-row">
+            <div class="col-5">
+                <input type="text" class="form-control" name="makeOrder" placeholder="enter dish id"/>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="countDishes" placeholder="enter count of the dish"/>
+            </div>
+                <button type="submit" class="btn btn-secondary">Make an order</button>
+        </div>
     </form>
 </div>
-<h4>Message!!</h4>
+<!--<h4>Message!!</h4>
 <span th:if="${message}">
         <span th:text="${message}"/>
-</span>
+</span>-->
 </div>
 </body>
 </html>

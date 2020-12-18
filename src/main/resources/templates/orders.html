@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <head>
     <meta charset="UTF-8">
     <title>Orders</title>
 </head>
 <body>
-<div>Orders list </br>
-    <table>
-        <thead>
+<div><h2 align="center">Orders list</h2> </br>
+    <table class="table table-sm table-spread">
+        <thead class="thead-dark">
         <tr>
-            <th> Order ID </th>
-            <th> User name </th>
-            <th> Dish name </th>
-            <th> Count of the dish </th>
-            <th> Order state</th>
+            <th scope="col"> Order ID </th>
+            <th scope="col"> User name </th>
+            <th scope="col"> Dish name </th>
+            <th scope="col"> Count of the dish </th>
+            <th scope="col"> Order state</th>
         </tr>
         </thead>
         <tbody>
@@ -34,9 +37,13 @@
 </div>
 <div>
     <form method="post" th:action="@{/acceptOrder}">
-    <!--<form method="post" th:action="@{/order}">-->
-    <input type="text" name="order_id" placeholder="enter order id"/>
-        <button type="submit">Accept an order</button>
+        <div class="form-row">
+            <div class="col-3"></div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="order_id" placeholder="enter order id"/>
+            </div>
+            <button type="submit" class="btn btn-secondary">Accept an order</button>
+        </div>
     </form>
     <span th:if="${message}">
         <h3 th:text="${message}"/>

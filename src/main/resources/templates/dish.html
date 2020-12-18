@@ -3,50 +3,68 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dishes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div align="center">
-        <div> Add new dish </br>
+        <div><h2> Add new dish</h2> </br>
             <form method="post" th:action="@{/dish}">
-                <input type="text" name="dishname" placeholder="enter a dish name"/>
-                <input type="text" name="dish_description" placeholder="enter a description"/>
-                <input type="text" name="category" placeholder="enter a category"/>
-                <input type="text" name="price" placeholder="enter price"/>
-                <button type="submit">Add dish</button>
+                <div class="form-row">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="dishname" placeholder="enter a dish name"/>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="dish_description" placeholder="enter a description"/>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="category" placeholder="enter a category"/>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="price" placeholder="enter price"/>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Add dish</button>
+                </div>
             </form>
-        </div>
+        </div></br></br>
 
-<div> Dishes menu
-    <table>
-        <thead>
-        <tr>
-            <th> Dish ID </th>
-            <th> Dish name </th>
-            <th> Dish description </th>
-            <th> Dish category </th>
-            <th> Dish price (rub.)</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${dishes.empty}">
-            <td colspan="5"> No dishes available </td>
-        </tr>
-        <tr th:each="dish : ${dishes}">
-            <td><span th:text="${dish.id}"/></td>
-            <td><span th:text="${dish.dishname}"/></td>
-            <td><span th:text="${dish.dish_description}"/></td>
-            <td><span th:text="${dish.category}"/></td>
-            <td><span th:text="${dish.price}"/></td>
-        </tr>
-        </tbody>
-    </table>
-    </br>
-</div>
-    <div> Delete dish </br>
+        <div><h2> Dishes menu</h2>
+            <table class="table table-sm table-spread">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col"> Dish ID </th>
+                    <th scope="col"> Dish name </th>
+                    <th scope="col"> Dish description </th>
+                    <th scope="col"> Dish category </th>
+                    <th scope="col"> Dish price (rub.)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${dishes.empty}">
+                    <td colspan="5"> No dishes available </td>
+                </tr>
+                <tr th:each="dish : ${dishes}">
+                    <td><span th:text="${dish.id}"/></td>
+                    <td><span th:text="${dish.dishname}"/></td>
+                    <td><span th:text="${dish.dish_description}"/></td>
+                    <td><span th:text="${dish.category}"/></td>
+                    <td><span th:text="${dish.price}"/></td>
+                </tr>
+                </tbody>
+            </table>
+            </br></br>
+        </div>
+        <div><h2> Delete dish</h2> </br>
         <form method="post" th:action="@{/dish_delete}">
-            <input type="text" name="dish_id" placeholder="enter a dish name"/>
-            <button type="submit">Delete dish</button>
+            <div class="form-row">
+                <div class="col-3"></div>
+                <div class="col-4">
+                    <input type="text" class="form-control" name="dish_id" placeholder="enter a dish name"/>
+                </div>
+                <button type="submit" class="btn btn-secondary">Delete dish</button>
+            </div>
         </form>
     </div>
     </div>
